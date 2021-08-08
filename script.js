@@ -17,13 +17,13 @@ form.addEventListener('submit', (e) => {
 })
 
 function getNumber(number){
-    
-    const BaseURL =`http://numbersapi.com/`;
-
-    fetch(BaseURL + number)
-    .then(res => res.text())
-    .then(data => {
-        factDiv.innerHTML = data;
-    });
-    
+   
+  const baseURL = "https://cors-anywhere.herokuapp.com/http://numbersapi.com/";
+  fetch(baseURL + number,{
+    headers:{
+      'x-requested-with': 'text/plain'
+    }})
+    .then(response => response.text())
+    .then(text => factDiv.innerHTML = text)
+    .catch(e=>console.log(e));
 }
